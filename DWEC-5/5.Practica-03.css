@@ -1,0 +1,21 @@
+body{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+#sigueRatonDiv{
+    position: fixed;
+    left: 0;
+    top: 0;
+    border: 1px solid black;
+    width: fit-content;    
+}
+.contenedor{
+    min-width: 100px;
+    min-height: 500px;
+    background-color: aqua;
+    border: 2px solid black;
+    box-sizing: border-box;
+    text-align: center;
+
+}

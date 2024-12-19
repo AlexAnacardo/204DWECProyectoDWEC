@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica 15</title>
+</head>
+<body>
+    <h1>ENCRIPTAR</h1>
+    <label for="recoger">Introduce una cadena de texto</label>
+    <br>
+    <br>
+    <textarea id="recoger" name="recoger" rows="10" cols="100"></textarea>
+    <br>
+    <br>
+    <label for="desplazamiento">Introduce el desplazamiento</label>
+    <br>
+    <br>
+    <input type="text" id="desplazamiento" name="desplazamiento">
+    <br>
+    <br>
+    <button onclick="encriptar()">Encriptar</button>
+    <br>
+    <br>
+    <label for="cadenaEncriptada">Cadena encriptada</label>
+    <br>
+    <br>
+    <textarea id="cadenaEncriptada" name="cadenaEncriptada" rows="10" cols="100"></textarea>
+    
+    <h2>DESENCRIPTAR</h2>
+    <label for="recogerEnc">Introduce una cadena de texto encriptada</label>
+    <br>
+    <br>
+    <textarea id="recogerEnc" name="recogerEnc" rows="10" cols="100"></textarea>
+    <br>
+    <br>
+    <label for="desplazamiento">Introduce el desplazamiento</label>
+    <br>
+    <br>
+    <input type="text" id="desplazamientoDes" name="desplazamiento">
+    <br>
+    <br>
+    <button onclick="desencriptar()">Desencriptar</button>
+    <br>
+    <br>
+    <label for="cadenaDesencriptada">Cadena desencriptada</label>
+    <br>
+    <br>
+    <textarea id="cadenaDesencriptada" name="cadenaDesencriptada" rows="10" cols="100"></textarea>
+    
+    <script>
+        function encriptar(){
+            desplazamiento=parseInt(document.getElementById('desplazamiento').value);
+            cadenaLetras="abcdefghijklmnñopqrstuvwxyz"
+            cadena=document.getElementById("recoger").value;
+            cadenaEncriptada=document.getElementById("recoger").value;
+
+            for(i=0; i<cadena.length; i++){                               
+                posicion=cadenaLetras.indexOf(cadena.charAt(i)); 
+                posicion+=desplazamiento;                                                   
+                if(posicion>27){
+                    posicion-=27;
+                }             
+                cadenaEncriptada=cadenaEncriptada.replaceAt(i, cadenaLetras.charAt(posicion));                
+            }
+
+            document.getElementById("cadenaEncriptada").value=cadenaEncriptada;
+        }
+
+        
+        function desencriptar(){
+            desplazamiento=parseInt(document.getElementById('desplazamientoDes').value);
+            cadenaLetras="abcdefghijklmnñopqrstuvwxyz"
+            cadena=document.getElementById("recogerEnc").value;
+            cadenaDesencriptada=document.getElementById("recogerEnc").value;
+
+            for(i=0; i<cadena.length; i++){                               
+                posicion=cadenaLetras.indexOf(cadena.charAt(i));                                
+                posicion-=desplazamiento;                                    
+                if(posicion<0){
+                    posicion+=27;
+                }             
+                console.log(i);
+                console.log(posicion);
+                console.log(cadenaLetras.charAt(posicion));
+                cadenaDesencriptada=cadenaDesencriptada.replaceAt(i, cadenaLetras.charAt(posicion));                
+            }
+
+            document.getElementById("cadenaDesencriptada").value=cadenaDesencriptada;
+        }
+        
+        String.prototype.replaceAt= function(index, replacement) {
+            //Esta funcion toma la cadena desde el inicio hasta el caracter anterior al que se reemplaza,
+            //lo concatena con el caracter reemplazado, y lo vuelve a concatenar con la parte posterior
+            return this.substring(0, index) + replacement + this.substring(index + replacement.length);
+        }
+    </script>
+</body>
+</html>

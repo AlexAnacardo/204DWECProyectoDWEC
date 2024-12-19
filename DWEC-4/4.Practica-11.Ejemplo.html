@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Padre</title>
+    <script src="4.Practica-11.js" defer></script>
+</head>
+<body>
+    <h1>Comunicando ventanas</h1>
+    <form>
+        <label for="nombre">Nombre</label>
+        <input type="text" name="nombre" id="nombre" placeholder="Nombre">
+        <br>
+        <br>
+        <label for="apellidos">Apellidos</label>
+        <input type="text" name="apellidos" id="apellidos" placeholder="Apellidos">
+        <br>
+        <br>
+        <label for="direccion">Direccion</label>
+        <input type="text" name="direccion" id="direccion" placeholder="Direccion">
+        <br>
+        <br>
+        <label for="email">Email</label>
+        <input type="text" name="email" id="email" placeholder="Email">
+        <br>
+        <br>
+        <label for="telefono">Nº de telefono</label>
+        <input type="text" name="telefono" id="telefono" placeholder="Nº de telefono">
+        <br>
+        <br>
+        <label for="comentarios">Comentarios</label>
+        <textarea id="comentarios" name="comentarios" placeholder="Comentarios"></textarea>
+        <br>
+        <br>        
+    </form>
+    <button onclick="llamadaAVentanaHijo()">Llamar a funcion de mi hijo</button>
+    <button onclick="centrarFocoHijo()">Centrar foco en mi hijo</button>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h1>PRUEBAS CON OBJETOS</h1>
+    </header>
+    <button onclick="recorrerObjeto(perrillo)">Recorrer objeto 1</button>
+    <br>
+    <br>
+    <button onclick="recorrerObjeto(gatillo)">Recorrer objeto 2</button>
+    <script>
+        class Gato{
+            constructor(nombre,edad,medidas){
+                this.nombre= nombre,
+                this.edad= edad,
+                this.medidas=medidas
+            }
+
+            maullar(){
+                return console.log("miau");                
+            }
+
+            maullar2(){
+                console.log("marramiau");                
+            }
+        }
+        
+        class Perro{
+            constructor(nombre,edad,medidas){
+                this.nombre= nombre,
+                this.edad= edad,
+                this.medidas=medidas
+            }
+            ladrar(){
+                console.log("woof");                
+            }
+
+            ladrar2(){
+                console.log("Mad Lions campeones de Worlds 2024 yo confio");                
+            }
+        }                
+
+        perrillo= new Perro("milaneso","2 años",["7kg", "100cm", "marron"]);
+        gatillo= new Gato("tortillo","1 año",["3kg", "30cm", "negro"]);
+
+        function recorrerObjeto(objeto){
+            for(clave in objeto){
+                alert(clave+": "+objeto[clave]);                
+            }    
+            console.log(Object.getPrototypeOf(perrillo));
+        }
+    </script>
+</body>
+</html>

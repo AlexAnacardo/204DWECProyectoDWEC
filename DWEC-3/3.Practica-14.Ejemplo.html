@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica 14</title>
+</head>
+<body>
+    <label for="recoger">Introduce una cadena de texto</label>
+    <input type="text" name="recoger" id="recoger">
+    <br>
+    <br>
+    <button onclick="totalCaracteres()">Buscar</button>
+
+    <script>
+        function totalCaracteres(){
+            cadena=document.getElementById("recoger").value;
+            let caracteres= new Map([]);
+
+            for(i=0; i<cadena.length; i++){
+                caracterCadena=cadena.charAt(i);
+                if(caracteres.has(caracterCadena)){
+                    caracteres.set(caracterCadena, caracteres.get(caracterCadena)+1);                                        
+                }
+                else{
+                    caracteres.set(caracterCadena, 1);
+                }
+            }
+
+            console.log("Hay un total de "+caracteres.size+" caracteres diferentes")
+            for(const [clave, valor] of caracteres){
+                console.log(clave+": "+valor);
+            }            
+        }
+    </script>
+</body>
+</html>

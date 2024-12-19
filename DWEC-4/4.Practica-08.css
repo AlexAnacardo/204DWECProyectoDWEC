@@ -1,0 +1,27 @@
+form{
+    display: flex;
+    flex-direction: column;
+    margin: 2% auto;
+}
+
+h3{
+    margin: 0 auto;
+}
+
+input{
+    width: 20%;
+    margin: 2% auto;
+}
+
+textarea{
+    width: 20%;
+    margin: 2% auto;
+}      
+
+#boton{
+    background-color: rgb(233, 96, 10);
+    color: white;
+    border: 1px solid black;
+    padding: 5px;
+    width: 7%;
+}

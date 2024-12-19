@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica 8</title>
+</head>
+<body>
+    <h1>Calcular media</h1>
+    <p>Introduce notas entre 0 y 10</p>
+    <input type="textarea" id="media"/>    
+    <button onclick="recogerTerminosMedia()">Calcular Media</button>
+    
+    <script>
+        /*function calcularMedia(){
+            cadena= document.getElementById('media').value;
+            notas=cadena.split(',');            
+            let total=0;
+
+            for(i=0; i<notas.length; i++){
+                total+=parseInt(notas[i]);                
+            }
+            console.log(total/i);
+        }*/
+        
+        function media(...numeros){            
+            let cont=0;
+            for(let i of numeros){
+                cont+=i;
+            }
+            return alert("Has introducido "+numeros.length+" numeros y la media es "+cont/numeros.length);
+        }
+
+        function recogerTerminosMedia(){
+            const numeroTerminos=document.getElementById('media').value;
+            calculoMedia=eval("media("+numeroTerminos+")");                        
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+body{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+#divGeneral1,#divGeneral2,#divGeneral3,#divGeneral4 {
+    flex: 20%;
+}
+
+#div1, #div11, #div111, #div1111{
+    position: relative;
+    float: left;
+    width: 300px;
+    height: 400px;
+    background-color: aqua;
+}
+
+#div2, #div22, #div222{
+    width: 200px;
+    height: 300px;
+    background-color: beige;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+#p1, #p11, #p111{
+    background-color: beige;
+    width: fit-content;
+    margin-left: 10px;
+}
+
+#p2, #p22, #p222{
+    position: relative;
+    float: left;
+    background-color: aqua;
+    width: fit-content;
+    margin-top: 10px;
+    margin-left: 10px;
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica 11</title>
+</head>
+<body>
+    <label for="introducir">Introduce valores para el array</label>
+    <input type="text" id="introducir" name="introducir"></input>
+    <br>
+    <br>
+    <label for="recorrer">Elige el recorrido del array: </label>
+    <select id="lista">
+        <option value="" selected disabled hidden>Elige aqui</option>
+        <option value="MetodoForOf">Metodo For of</option>
+        <option value="MetodoMap">Metodo Map</option>
+        <option value="MetodoForIn">Metodo ForIn</option>
+        <option value="MetodoForEach">Metodo ForEach</option>        
+    </select>
+    <button onclick="asteriscos()">Generar asteriscos</button>
+    
+    <script>
+        function asteriscos(){
+            metodo=document.getElementById('lista').value;
+            cadena=document.getElementById('introducir').value;
+            array=cadena.split(" ");
+            switch(metodo){
+                case "MetodoForOf":
+                    for(valor of array){
+                        console.log(valor);
+                    }
+                break;
+
+                case "MetodoMap":
+                    array.map(function (valor){ console.log(valor) });
+                break;
+
+                case "MetodoForIn":
+                    for(valor in array){
+                        console.log(array[valor]);
+                    }
+                break;
+
+                case "MetodoForEach":
+                    array.forEach((elemento)=> console.log(elemento));
+                break;
+
+                default:
+                    alert("Debe escoger un metodo");
+            }
+        }
+    </script>
+</body>
+</html>

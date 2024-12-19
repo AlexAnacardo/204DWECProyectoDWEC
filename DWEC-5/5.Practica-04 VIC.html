@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica Drag and Drop</title>
+    <style>
+        /* Estilo básico para la página */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            height: 100vh;
+            justify-content: center;
+        }
+
+        /* Contenedor superior */
+        .contenedor {
+            width: 100%;
+            text-align: center;
+            margin: 10px 0;
+            min-height: 67px;
+        }
+
+        /* Estilo para la cruz roja */
+        .cruz {
+            font-size: 50px;
+            cursor: pointer;
+            user-select: none;
+            margin: 0 auto;
+        }
+
+        /* Contenedor inferior con los contenedores secundarios */
+        #contenedorInferior {
+            display: flex;
+            justify-content: space-around;
+            width: 80%;
+        }
+
+        /* Contenedores secundarios */
+        .contenedorSecundario {
+            width: 100px;
+            height: 100px;
+            background-color: lightblue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid #005a87;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Cambio de color cuando se arrastra sobre un contenedor */
+        .contenedorSecundario.dragover {
+            background-color: lightgreen;
+        }
+    </style>
+</head>
+<body>
+    <div id="contenedorSuperior" class="contenedor">
+        <div id="cruzRoja" class="cruz" draggable="true">
+            ✖️
+        </div>
+    </div>
+    <div id="contenedorInferior" class="contenedor">
+        <div class="contenedorSecundario">
+            Suéltame dentro!!!
+        </div>
+        <div class="contenedorSecundario">
+            Suéltame dentro!!!
+        </div>
+        <div class="contenedorSecundario">
+            Suéltame dentro!!!
+        </div>
+    </div>
+
+    <script src="5.Practica-04.js"></script>
+</body>
+</html>

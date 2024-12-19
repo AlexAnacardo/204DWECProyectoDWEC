@@ -1,0 +1,68 @@
+body{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+#elementosArrastrables, #elementosDestinoArrastres{    
+    width: 100%;
+    height: 300px;
+    border: 1px dotted black;
+}
+
+#elementosArrastrables{
+    display: flex;
+    flex-direction: row;
+}
+
+#elementosDestinoArrastres{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.contenedorArrastrable{
+    flex:0 0 1;
+    width: 200px;
+    height: 200px;
+    margin: auto;
+    box-sizing: border-box;
+}
+.contenedor{
+    position: relative;
+    flex:0 0 1;
+    width: 300px;
+    height: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: aqua;
+    border: 2px solid black;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 30px;
+}    
+
+span{
+    position: absolute;
+    top: 0;
+}
+
+.row{
+    display: flex;
+    justify-content: space-around;
+}
+
+/* Contenedores secundarios */
+.contenedor{
+    
+    background-color: lightblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #005a87;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Cambio de color cuando se arrastra sobre un contenedor */
+.contenedor.dragover {
+    background-color: lightgreen;
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function ecuacionSegundoGrado(a,b,c){
+            raiz=Math.sqrt(Math.pow(b,2)-4*a*c)
+            return ("Los resultados son: "+((-b+raiz)/2*a)+" y "+((-b-raiz)/2*a));
+        }
+
+        Math.mcm=function(a,b){
+            return(a*b/Math.MCD(a,b));
+        }
+
+        Math.MCD=function(a,b){
+            fin=false;
+            cambio=0;
+            while(!fin){            
+                if(a%b==0){
+                    return b;
+                    fin=true;
+                }
+                else{
+                    cambio=b;
+                    b=a%b;
+                    a=cambio;
+                }
+            }
+        }
+
+        numeroA=prompt("Introduce un numero");
+        while(isNaN(numeroA) || numeroA<0){
+            numeroA=prompt("Numero no valido");
+        }
+        
+        numeroB=prompt("Introduce otro numero");
+        while(isNaN(numeroB) || numeroB<0){
+            numeroB=prompt("Numero no valido");
+        }
+
+        alert("Maximo comun divisor: "+Math.MCD(numeroA,numeroB));
+        alert("Minimo comun multiplo: "+Math.mcm(numeroA,numeroB));
+
+        termino1=prompt("Termino1");
+        termino2=prompt("Termino2");
+        termino3=prompt("Termino3");
+        ecuacionSegundoGrado(termino1,termino2,termino3);
+    </script>
+</body>
+</html>

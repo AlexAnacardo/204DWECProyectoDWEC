@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h1>Pruebas con objetos DATE</h1>
+    </header>
+    <button onclick="tiempo1=Date.now()">1ª pulsación</button>
+    <button onclick="tiempo2=Date.now()">2ª pulsación</button>
+    <button onclick="calcularTiempo(tiempo1,tiempo2)">Calculo</button>
+
+    <script>        
+        calcularTiempo=function(tiempo1, tiempo2){
+            total=tiempo2-tiempo1;    
+            segundos=Math.trunc(total/1000);        
+            minutos=Math.trunc(total/60000);
+            alert("Tiempo transcurrido: "+total+"ms "+segundos+"s "+minutos+" Minutos");
+        }
+    </script>
+</body>
+</html>

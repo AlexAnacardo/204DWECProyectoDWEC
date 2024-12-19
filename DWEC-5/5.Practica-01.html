@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica 1</title>
+    <script src="5.Practica-01.js" defer></script>    
+    <link rel="stylesheet" type="text/css" href="5.Practica-01.css"/>
+</head>
+<body>
+    <div id="divGeneral1">
+        <h3>PROPAGACION DE EVENTOS <BR>FASE BURBUJA</h3>
+        <div id="div1">
+            <div id="div2">
+                <p id="p2">Parrafo2 dentro de div2</p>
+            </div>
+            <p id="p1">Parrafo1 dentro de div1 y fuera de div2</p>
+        </div>
+    </div>
+    <div id="divGeneral2">
+        <h3>PROPAGACION DE EVENTOS <BR>FASE CAPTURA</h3>
+        <div id="div11">
+            <div id="div22">
+                <p id="p22">Parrafo2 dentro de div2</p>
+            </div>
+            <p id="p11">Parrafo1 dentro de div1 y fuera de div2</p>
+        </div>
+    </div>
+    <div id="divGeneral3">
+        <h3>PROPAGACION DE EVENTOS <BR>DESACTIVAR CAPTURA</h3>
+        <div id="div111">
+            <div id="div222">
+                <p id="p222">Parrafo2 dentro de div2</p>
+            </div>
+            <p id="p111">Parrafo1 dentro de div1 y fuera de div2</p>
+        </div>
+    </div>
+    <div id="divGeneral4">
+            <div id="div1111">
+            <br>
+            <br>
+            <button id="botonActivar">Activar captura</button>
+            <br>
+            <br>
+            <button id="boton1">Boton 1</button>
+            <br>
+            <br>
+            <button id="boton2">Boton 2</button>
+            <br>
+            <br>
+            <button id="boton3">Boton 3</button>
+            <br>
+            <br>
+            <button id="botonDesactivar">Desactivar</button>
+        </div>
+    </div>
+</body>
+</html>

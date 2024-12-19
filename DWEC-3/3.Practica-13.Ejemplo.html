@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica 13</title>
+</head>
+<body>
+    <label for="recoger">Introduce una cadena de texto</label>
+    <input type="text" name="recoger" id="recoger">
+    <br>
+    <br>
+    <label for="buscar">La cadena de texto a buscar</label>
+    <input type="text" name="buscar" id="buscar">
+    <br>
+    <br>
+    <button onclick="buscarCadena()">Buscar</button>
+    <br>
+    <br>
+    <label for="mostrar">Mostrar array con las palabras introducidas</label>    
+    <br>
+    <br>
+    <button onclick="mostrarCadena()">Mostrar</button>
+    <br>
+    <br>
+    <textarea id="texto" cols="250" rows="10"></textarea>
+    <br>
+    <br>
+    <button onclick="mostrarCadenaOrdenada()">Mostrar ordenado</button>
+    <br>
+    <br>
+    <button onclick="eliminarTilde(document.getElementById('recoger').value)">Tilde</button>
+    <textarea id="textoOrdenado" cols="250" rows="10"></textarea>
+    <script>
+        function buscarCadena(){
+            patron= document.getElementById("buscar").value;
+            cadena= document.getElementById("recoger").value;
+
+            patron=eliminarTilde(patron);
+            cadena=eliminarTilde(cadena);
+
+            arrayInstancias=[...cadena.matchAll(patron)]; 
+            longitudArray= arrayInstancias.length    
+            if(longitudArray>0){
+                alert("Cadena encontrada");
+                alert("Ha aparecido "+ arrayInstancias.length + " veces");
+            }
+            else{
+                alert("No se ha encontrado Coincidencias")
+            }
+            
+        }
+
+        function mostrarCadena(){
+            cadena= document.getElementById("recoger").value;
+            arrayPalabras=cadena.split(" ");
+            document.getElementById("texto").value=arrayPalabras;
+        }
+
+        function mostrarCadenaOrdenada(){
+            cadena= document.getElementById("recoger").value;
+            arrayOrdenado=cadena.split(" ");
+            arrayOrdenado=arrayOrdenado.sort(function(a,b){return a.localeCompare(b)});
+            document.getElementById("textoOrdenado").value=arrayOrdenado;
+        }
+
+        function eliminarTilde(cadena){        
+            arrayTildes=['á','é','í','ó','ú'],
+            arrayNoTildes=['a','e','i','o','u'],
+            tildes=new RegExp('[áéíóú]');
+            if(tildes.test(cadena)){                                
+                for(i=0; i<cadena.length; i++){
+                    cadena=cadena.replaceAll(arrayTildes[i], arrayNoTildes[i]);
+                }
+            }
+            return cadena;
+        }
+    </script>
+</body>
+</html>

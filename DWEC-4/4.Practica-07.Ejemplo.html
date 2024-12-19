@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="4.Practica-07.js"></script>
+</head>
+<body>
+    <h1>Por etiquetas:</h1>
+    <p>Cambia texto por etiqueta + textContent</p>
+    <input type="text" id="tagTC">
+    <button onclick="cambiarTag('textContent')">Cambiar texto</button>
+    <p>Cambia texto por etiqueta + innerHTML</p>
+    <input type="text" id="tagInnerHTML">
+    <button onclick="cambiarTag('innerHTML')">Cambiar texto</button>
+    <p>Cambia texto por etiqueta + innerText</p>
+    <input type="text" id="tagInnerText">
+    <button onclick="cambiarTag('innerText')">Cambiar texto</button>
+    <p style="background-color: lightgreen;">Texto que se cambia</p>
+
+
+    <h1>Por ID:</h1>
+    <p>Cambia texto por etiqueta + textContent</p>
+    <input type="text" id="idTC">
+    <button onclick="cambiarId('textContent')">Cambiar texto</button>
+    <p>Cambia texto por etiqueta + innerHTML</p>
+    <input type="text" id="idInnerHTML">
+    <button onclick="cambiarId('innerHTML')">Cambiar texto</button>   
+    <p>Cambia texto por etiqueta + innerText</p>
+    <input type="text" id="idInnerText">
+    <button onclick="cambiarId('innerText')">Cambiar texto</button> 
+    <p id="cambiar" style="background-color: lightgreen;">Texto que se cambia</p>
+
+
+</body>
+</html>

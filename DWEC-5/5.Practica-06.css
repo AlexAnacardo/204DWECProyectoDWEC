@@ -1,0 +1,24 @@
+form{
+    margin-top: 4%;
+    display: flex;    
+    flex-direction: column;
+    justify-content: center;    
+    border: 1px solid black;
+    width: 600px;
+    section{
+        display: flex;
+        flex-direction: row;                
+    }
+    input, label, textarea, select{
+        margin: 10px auto;               
+    } 
+    label{
+        width: 20%;        
+    }
+    select{
+        width: 26%;
+    }
+    button{
+        margin: 20px auto;
+    }
+}

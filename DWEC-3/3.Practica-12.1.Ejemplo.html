@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica 12.1</title>
+</head>
+<body>
+    <label for="generar">Nº de tarjeta de credito generado</label>
+    <input type="text" disabled id="generar" name="generar" style='width: 175px'>
+    <button onclick="generarTarjeta()">Generar un nº de tarjeta de credito</button>
+    <br>
+    <br>
+    <label for="validar">Nº de tarjeta de credito generado</label>
+    <input type="text" id="validar" name="validar">
+    <button onclick="validarTarjeta()">Validar nº de tarjeta de credito</button>
+
+    <script>
+        function generarTarjeta(){
+            arrayTarjeta=[];
+            tarjetaCopia=[];
+            suma=0;
+
+            for(let i=0; i<16; i++){
+                arrayTarjeta.push(Math.floor(Math.random()*10));
+            }        
+            
+            for(let i=0; i<16; i+=2){
+                if((i+1)%2===0){
+                    tarjetaCopia[i]=arrayTarjeta[i]*2;    
+                    if(tarjetaCopia[i]>9){
+                        tarjetaCopia[i]=(Math.floor(tarjetaCopia[i]/10))+(tarjetaCopia[i]%10);
+                    }   
+                }
+                else{
+                    tarjetaCopia[i]=arrayTarjeta[i];
+                }
+                
+            }
+
+            for(valor in tarjetaCopia){                
+                suma=suma+tarjetaCopia[valor];        
+            }
+
+            if(suma%10===0){
+                alert("valido");                
+                stringTarjeta=arrayTarjeta.toString();                
+                stringTarjeta=stringTarjeta.replaceAll(',','');
+                document.getElementById('generar').value=stringTarjeta;
+            }
+            else{
+                alert("no valido");            
+                for(let i=0; i<16; i++){
+                    if(tarjetaCopia[i]>suma%10 && tarjetaCopia[i]%2===0){
+                        tarjetaCopia[i]-=suma%10;
+                        i=16;
+                    }
+                    else if(tarjetaCopia[i]%2===0){
+                        suma=suma-tarjetaCopia[i];
+                        tarjetaCopia[i]=0;
+                        ESTO NO FUNCIONA (ME VOY A PEGAR UN CORCHAZO)
+                    }                    
+                }
+
+                stringTarjeta=arrayTarjeta.toString();                
+                stringTarjeta=stringTarjeta.replaceAll(',','');
+                document.getElementById('generar').value=stringTarjeta;
+            }
+
+        }
+
+        function validarTarjeta(){
+            cadena=document.getElementById('validar').value;
+
+            arrayCadena=cadena.split("");
+            arrayCopia=[];
+
+            suma=0
+            for(let i=0; i<16; i++){
+                arrayCopia[i]=arrayCadena[i];
+            }              
+            
+            for(let i=0; i<16; i+=2){
+                arrayCopia[i]=arrayCopia[i]*2;    
+                if(arrayCopia[i]>9){
+                    arrayCopia[i]=(Math.floor(arrayCopia[i]/10))+(arrayCopia[i]%10);
+                }
+            }
+
+            for(valor in arrayCopia){
+                suma+=parseInt(arrayCopia[valor]);
+            }
+            if(suma%10===0){
+                alert("Tarjeta valida");
+                alert(suma);
+            }
+            else{
+                alert("Tarjeta NO valida");
+                alert(suma);
+            }
+        }
+    </script>
+</body>
+</html>
+

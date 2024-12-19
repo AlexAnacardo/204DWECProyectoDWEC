@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h1>PRUEBAS CON OBJETOS</h1>
+    </header>
+    <button onclick="recorrerObjeto(animal)">Recorrer objeto 1</button>
+    <br>
+    <br>
+    <button onclick="recorrerObjeto(gato)">Recorrer objeto 2</button>
+    <script>
+        class Animal{
+            constructor(nombre,edad){
+                this.nombre= nombre,
+                this.edad= edad
+            }
+
+            dormir(){
+                return console.log(this.nombre+" duerme");                
+            }
+        }
+
+        class Gato extends Animal{
+            constructor(nombre, edad, color){
+                super(nombre,edad);
+                this.color=color;
+            }
+            
+            despertar(){
+                return console.log(this.nombre+" despierta");
+            }
+        }
+        
+        animal=new Animal("milaneso",2);
+        gato=new Gato("tortillo",3,"negro");
+        
+        recorrerObjeto(animal);
+        recorrerObjeto(gato);
+
+        Animal.prototype.mamifero;
+
+        Animal.prototype.comer=function(){return console.log(this.nombre+" come")};
+        
+        animal.mamifero=prompt("¿"+animal.nombre+" es un mamifero?")        
+        gato.mamifero=prompt("¿"+gato.nombre+" es un mamifero?")
+        
+        function recorrerObjeto(objeto){
+            for(clave in objeto){
+                alert(clave+": "+objeto[clave]);                
+            }                
+        }        
+    </script>
+</body>
+</html>

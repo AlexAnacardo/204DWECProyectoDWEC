@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprobación de Números Primos</title>
+</head>
+<body>
+    <h1>Comprobar si un número es primo</h1>
+    <label for="numero">Introduce un número entre 1 y 300:</label>
+    <input type="text" id="numero" placeholder="Introduce un número">
+    <button onclick="comprobarPrimo()">Comprobar</button>
+    <p id="resultado"></p>
+
+    <script>
+        /*function comprobarPrimo() {
+            const resultado = document.getElementById("resultado");
+            let numero = document.getElementById("numero").value;
+
+            // Validar que el valor introducido sea un número
+            if (isNaN(numero) || numero.trim() === "") {
+                resultado.textContent = "Por favor, introduce un número válido.";
+                return;
+            }
+
+            // Convertir el número a entero
+            numero = parseInt(numero);
+
+            // Validar que el número esté en el rango de 1 a 300
+            if (numero < 1 || numero > 300) {
+                resultado.textContent = "El número debe estar entre 1 y 300.";
+                return;
+            }
+
+            // Comprobar si el número es primo
+            if (esPrimo(numero)) {
+                resultado.textContent = "El número " + numero + " es primo.";
+            } else {
+                // Encontrar divisores
+                let divisores = obtenerDivisores(numero);
+                resultado.textContent = "El número " + numero + " no es primo, es divisible por: " + divisores.join(", ");
+            }
+        }
+
+        // Función para comprobar si un número es primo
+        function esPrimo(n) {
+            if (n <= 1) return false;
+            if (n === 2 || n === 3) return true; // 2 y 3 son primos
+            if (n % 2 === 0 || n % 3 === 0) return false; // No es primo si es divisible entre 2 o 3
+
+            for (let i = 5; i * i <= n; i += 6) {
+                if (n % i === 0 || n % (i + 2) === 0) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        // Función para obtener los divisores de un número
+        function obtenerDivisores(n) {
+            let divisores = [];
+            for (let i = 1; i <= n; i++) {
+                if (n % i === 0) {
+                    divisores.push(i);
+                }
+            }
+            return divisores;
+        }
+        */
+
+        function comprobarPrimo() {
+    // Solicitar número mediante prompt
+    let numero = prompt("Introduce un número entre 1 y 300:");
+
+    // Validar que el valor introducido sea un número
+    if (isNaN(numero) || numero.trim() === "") {
+        alert("Por favor, introduce un número válido.");
+        return;
+    }
+
+    // Convertir el número a entero
+    numero = parseInt(numero);
+
+    // Validar que el número esté en el rango de 1 a 300
+    if (numero < 1 || numero > 300) {
+        alert("El número debe estar entre 1 y 300.");
+        return;
+    }
+
+    // Comprobar si el número es primo
+    if (esPrimo(numero)) {
+        alert("El número " + numero + " es primo.");
+    } else {
+        // Encontrar divisores
+        let divisores = obtenerDivisores(numero);
+        alert("El número " + numero + " no es primo, es divisible por: " + divisores.join(", "));
+    }
+}
+
+// Función para comprobar si un número es primo
+function esPrimo(n) {
+    if (n <= 1) return false;
+    if (n === 2 || n === 3) return true; // 2 y 3 son primos
+    if (n % 2 === 0 || n % 3 === 0) return false; // No es primo si es divisible entre 2 o 3
+
+    for (let i = 5; i * i <= n; i += 6) {
+        if (n % i === 0 || n % (i + 2) === 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+// Función para obtener los divisores de un número
+function obtenerDivisores(n) {
+    let divisores = [];
+    for (let i = 1; i <= n; i++) {
+        if (n % i === 0) {
+            divisores.push(i);
+        }
+    }
+    return divisores;
+}
+
+// Llamada a la función para ejecutar el proceso
+comprobarPrimo();
+    </script>
+</body>
+</html>

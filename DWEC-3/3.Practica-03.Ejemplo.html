@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h1>PRUEBAS CON OBJETOS</h1>
+    </header>
+    <button onclick="recorrerObjeto(perrillo)">Recorrer objeto 1</button>
+    <br>
+    <br>
+    <button onclick="recorrerObjeto(gatillo)">Recorrer objeto 2</button>
+    <script>
+        class Gato{
+            constructor(nombre,peso,raza){
+                this.nombre= nombre,
+                this.peso= peso,
+                this.raza=raza
+            }
+
+            maullar(){
+                return console.log("miau");                
+            }
+
+            maullar2(){
+                console.log("marramiau");                
+            }
+        }
+        gato1=new Gato("a","b","c");
+        gato2=new Gato("d","e","f");
+
+        Gato.prototype.dormir=function(){return `${this.nombre} duerme 14 horas al día y pesa
+            ${this.peso} kgs. ${this.nombre} es de raza ${this.raza}`};
+        Gato.prototype.apellido;
+
+        promptApellido=prompt("Introduce apellido");
+        gato1.apellido=promptApellido;
+        promptApellido=prompt("Introduce apellido");
+        gato2.apellido=promptApellido;
+
+        recorrerObjeto(gato1);
+        recorrerObjeto(gato2);
+
+        alert(gato1.dormir());
+        alert(gato2.dormir());
+
+        function recorrerObjeto(objeto){
+            for(clave in objeto){
+                alert(clave+": "+objeto[clave]);                
+            }                
+        }        
+    </script>
+</body>
+</html>

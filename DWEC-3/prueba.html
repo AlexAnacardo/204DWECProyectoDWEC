@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const Perro = {
+            nombre: "nombreP",
+            peso: "pesoP",
+            raza: "razaP",
+            dormir: function (){return `${this.nombre} duerme 14 horas al día y pesa
+                ${this.peso} kgs. ${this.nombre} es de raza ${this.raza}`;
+
+            }
+        }
+
+        const oscar= Object.create (Perro);
+        Perro.__proto__.horasPaseo
+        
+        oscar.nombre="Óscar";
+        oscar.peso=26;
+        oscar.raza="Mestizo de border collie y podenco";
+        alert(oscar.dormir());// salida esperada --> “Óscar duerme 14 horas al día y pesa 26 kgs. Óscar es mestizo de border collie y podenco ”
+        console.log(`${oscar.horasPaseo} pasea`);
+        console.log(HTMLDocument.constructor.name);
+    </script>
+</body>
+</html>

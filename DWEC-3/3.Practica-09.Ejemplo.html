@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .bombilla{
+                border-radius: 60px;
+                width: 100px;
+                height: 100px;
+                border: solid 5px rgb(0, 0, 0);
+                position: relative;
+                left: 18px;
+                float: left;
+                margin-top: 5px;
+            }
+            .cuerpo{
+                border-radius: 10px;
+                width: 150px;
+                height: 400px;
+                border: solid 5px rgb(0, 0, 0);
+                position: relative;
+                margin-top: 5px;
+            }            
+            .colorRojo{
+                background-color: #800000;
+            }
+            .colorAmarillo{
+                background-color: #808000;
+            }
+            .colorVerde{
+                background-color: #008000;
+            }
+            .colorNegro{
+                background-color: rgb(0, 0, 0);
+            }
+        </style>
+    </head>
+    <body>
+
+        <h1> Mi semáforo</h1>
+        <div class="cuerpo colorNegro">
+
+            <div id="rojo" class="bombilla colorRojo">
+
+            </div>
+            <div id="amarillo" class="bombilla colorAmarillo">
+
+            </div>
+            <div id="verde" class="bombilla colorVerde">
+
+            </div>
+            
+        </div><br>
+            <button onclick="unCiclo()">Iniciar ciclo</button>
+            <button onclick="ciclo()">Ciclo continuo</button>
+            <button onclick="pararCiclo()">Parar ciclo</button>        
+        <script>
+            let cicloOn=false;
+            function unCiclo(){
+                timeVerde=setTimeout(cambiaColor,0,"verde");
+                timeAmarillo=setTimeout(cambiaColor,2000,"amarillo");
+                timeRojo=setTimeout(cambiaColor,4000,"rojo");
+            }
+
+            function ciclo(){                                
+                intervalo=setInterval(unCiclo, 6000);
+            }
+
+            function pararCiclo(){
+                clearInterval(intervalo);   
+                clearTimeout(timeVerde);
+                clearTimeout(timeRojo);
+                clearTimeout(timeAmarillo);
+                console.log("Ciclo terminado");
+            }
+
+            function cambiaColor(bombilla){
+                switch (bombilla){
+                    case "rojo" :
+                        console.log("rojo");
+                        document.getElementById("verde").style.backgroundColor = "#008000";
+                        document.getElementById("amarillo").style.backgroundColor = "#808000";
+                        document.getElementById("rojo").style.backgroundColor = "#FF0000";
+                        break;
+                    case "amarillo" :
+                        console.log("amarillo");
+                        document.getElementById("amarillo").style.backgroundColor = "#FFFF00";
+                        document.getElementById("rojo").style.backgroundColor = "#800000";
+                        document.getElementById("verde").style.backgroundColor = "#008000";
+                        break;
+                    case "verde" :
+                        console.log("verde");
+                        document.getElementById("rojo").style.backgroundColor = "#800000";
+                        document.getElementById("verde").style.backgroundColor = "#00FF00";                        
+                        document.getElementById("amarillo").style.backgroundColor = "#808000";
+                        
+                        break;
+                    default: 
+                    document.getElementById("rojo").style.backgroundColor = "black";
+                    document.getElementById("amarillo").style.backgroundColor = "black";
+                    document.getElementById("verde").style.backgroundColor = "black";
+                }
+            }
+        </script>
+    </body>
+</html>

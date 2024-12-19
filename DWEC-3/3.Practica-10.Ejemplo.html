@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica 10</title>
+</head>
+<body>
+    <p>Objeto ya creado</p>
+    <button onclick="funcionStringify()">Objeto ya creado</button>
+    <p>Introduce una cadena json</p>
+    <p>{"name":"John", "birth":"1986-12-14", "city":"New York"}</p>
+    <input type="textarea" id="value" style="width: 330px" placeholder='{"name":"John", "birth":"1986-12-14", "city":"New York"}'/>  
+    <button onclick="funcionParse()">Recoger cadena</button>
+    
+    <script>
+        
+        function funcionStringify(){
+            const perro={
+                raza: "mestizo",
+                color: "marron",
+            }
+
+            objJson=JSON.stringify(perro);
+            
+            alert(objJson);
+        }
+
+        function funcionParse(){
+            cadena=document.getElementById('value').value;
+            objeto=JSON.parse(cadena);
+            for(clave in objeto){
+                alert(clave+": "+objeto[clave]);
+            }
+            
+        }
+
+    </script>
+</body>
+</html>

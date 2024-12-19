@@ -1,0 +1,29 @@
+.parrafo2{
+    color: rgb(211, 41, 138);
+    border: dotted;        
+}
+
+.div2Alt{
+    width: 600px;
+    height: 200px;
+    border: solid 5px rgb(96, 170, 178);
+    background-color: rgb(96, 170, 178);
+    position: relative;
+    margin-top: 5px;
+}
+
+div{
+    width: 500px;
+    height: 150px;
+}
+
+button{
+    border: none;
+    background-color: black;
+    color: white;
+    padding: 10px;
+}
+
+#div3{
+    background-color: cyan
+}

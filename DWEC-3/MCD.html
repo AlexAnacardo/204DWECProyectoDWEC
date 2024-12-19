@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        Math.MCD=function(a,b){            
+
+            minimoA=2;
+            arrayA=[];
+            minimoB=2;
+            arrayB=[];
+            while(a>1){
+                while(a%minimoA!=0){
+                    minimoA++;
+                }
+                arrayA.push(minimoA);
+            }
+            while(b>1){
+                while(b%minimoB!=0){
+                    minimoB++;
+                }
+                arrayA.push(minimoB);
+            }
+            alert(arrayA);
+            alert(arrayB);
+        }
+        Math.mcm=function(a,b){
+            
+        }
+        Math.MCD(8,12);
+    </script>
+</body>
+</html>

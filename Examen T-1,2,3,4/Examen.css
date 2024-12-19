@@ -1,0 +1,44 @@
+body{
+    display: flex;
+    flex-direction: column;    
+}
+
+div{
+    margin: 2% 0;
+}
+
+
+
+
+
+/*Semaforo*/
+.bombilla{
+    border-radius: 60px;
+    width: 100px;
+    height: 100px;
+    border: solid 5px rgb(0, 0, 0);
+    position: relative;
+    left: 18px;
+    float: left;
+    margin-top: 5px;
+}
+.cuerpo{
+    border-radius: 10px;
+    width: 150px;
+    height: 400px;
+    border: solid 5px rgb(0, 0, 0);
+    position: relative;
+    margin-top: 5px;
+}            
+.colorRojo{
+    background-color: #800000;
+}
+.colorAmarillo{
+    background-color: #808000;
+}
+.colorVerde{
+    background-color: #008000;
+}
+.colorNegro{
+    background-color: rgb(0, 0, 0);
+}

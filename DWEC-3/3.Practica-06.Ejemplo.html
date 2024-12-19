@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+    <body>
+        <label for="nombre">Introduzca su Nombre
+            <input type="text" id="nombre" name="nombre" required minlength="4" maxlength="28" size="28">
+        </label>    
+        <button onclick="validarNombre()">Validar nombre</button>
+
+        <label for="apellido">Introduzca su apellido
+            <input type="text" id="apellido" name="apellido" required minlength="2">  
+        </label>  
+        <button onclick="validarApellido()">Validar apellido</button>
+
+        <label for="direccion">Direccion completa
+            <input type="text" id="direccion" name="direccion" required minlength="3" maxlength="28" size="28">    
+        </label>
+        <button onclick="validarDireccion()">Validar direccion</button>
+
+        <label for="telefono">Introduzca su telefono
+            <input type="text" id="telefono" name="telefono" required minlength="11" maxlength="11" size="11">    
+        </label>
+        <button onclick="validarDireccion()">Validar direccion</button>
+
+        <script>
+            validarNombre=function(){
+                nombre=document.getElementById('nombre').value;
+                let regexNombre= /^\w{3,}[\s\w{2,}]*$/; //o NewRegex('^\\w{3,}[\\s\\w{2,}]*$');                
+                if(regexNombre.test(nombre)){
+                    alert("Nombre validado");
+                }
+                else{
+                    alert("Nombre invalido");
+                    alert(nombre);
+                    alert(regexNombre.test(nombre));
+                }
+            }
+
+            validarApellido=function(){
+                apellido=document.getElementById('apellido').value;
+                //let regexApellido=new RegExp('^\\w{2,}[\\s\\w{2,}]*$' | '^\\w{2,}-\\w{2,}\\s\\w{2,}-\\w{2,}$' | '^\\w{2,}-\\w{2,}\\s\\w{2,}$' | '^\\w{2,}\\s\\w{2,}-\\w{2,}$');
+                let regexApellido=/^\w{2,}[ \w{2,}]*$ | ^\w{2,}-\w{2,} \w{2,}-\w{2,}$ | ^\w{2,}-\w{2,} \w{2,}$ | ^\w{2,} \w{2,}-\w{2,}$/;
+                if(regexApellido.test(apellido)){
+                    alert("Apellido validado");
+                }
+                else{
+                    alert("Apellido invalido");                    
+                }
+            }
+
+            validarDireccion=function(){
+
+            }
+
+            validarDireccion=function(){
+
+            }
+        </script>
+    </body>
+</html>

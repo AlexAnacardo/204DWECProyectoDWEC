@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Perro(nombre, peso, raza){
+                this.nombre= "Toby",
+                this.peso= "medio gramo",
+                this.raza="no se, pero es chikito",
+                this.dormir=function(){
+                    return `${this.nombre} duerme 14 horas al día y pesa
+                    ${this.peso} kgs. ${this.nombre} es de raza ${this.raza}`
+                }
+            }
+            promptApellido=prompt("Introduce apellido");
+            Perro.prototype.apellido=promptApellido;
+            //Perro.prototype.dormir=function(){return `${this.nombre} duerme 14 horas al día y pesa
+            // ${this.peso} kgs. ${this.nombre} es de raza ${this.raza}`};
+
+            
+
+        toby=new Perro("a","b","c");
+        
+        for(clave in toby){
+            alert(clave+": "+toby[clave]);                
+        }        
+        alert(toby.dormir());
+    </script>
+</body>
+</html>

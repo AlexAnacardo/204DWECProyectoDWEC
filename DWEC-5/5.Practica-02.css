@@ -1,0 +1,14 @@
+#divGeneral{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.contenedor{
+    flex:20%;
+    min-width: 100px;
+    min-height: 100px;
+    background-color: aqua;
+    border: 2px solid black;
+    box-sizing: border-box;
+}
