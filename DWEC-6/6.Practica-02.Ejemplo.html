@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Mi calculadora asíncrona (II)</title>
+        <style>
+            .tecla{
+                box-sizing: border-box;
+                background-color: dimgrey;
+                text-align: center;
+                color: aliceblue;
+                font-weight: 500;
+                font-size: 50px;
+                border-radius: 20px;
+                width: 200px;
+                height: 100px;
+                border: solid 5px rgb(0, 0, 0);
+                padding-top: 15px;
+            }
+            .cuerpo{
+                display: grid;
+                justify-content: center;
+                grid-template-columns: repeat(5 1 fr);
+                grid-template-rows: auto;
+                gap: 10px;
+                border-radius: 10px;
+                width: 550px;
+                height: auto;
+                border: solid 5px rgb(0, 0, 0);
+                margin-top: 5px;
+                background-color: rgb(0, 0, 0);
+            } 
+            p{
+                box-sizing: border-box;
+                grid-row:1;
+                grid-column: span 5;
+                font-weight: 500;
+                font-size: 50px;
+                width: 100%;
+                color: aliceblue;
+                text-align: center;
+            }   
+            #pantalla{
+                box-sizing: border-box;
+                grid-row: 3;
+                grid-column: span 5;
+                border-radius: 10px;
+                height: 70px;
+                width: 100%;
+                background-color: aliceblue;
+                text-align: right;
+                color: rgb(10, 10, 10);
+                font-weight: 500;
+                font-size: 50px;
+            }  
+            #pantalla2{
+                box-sizing: border-box;
+                grid-row: 2;
+                grid-column: span 5;
+                border-radius: 10px;
+                height: 70px;
+                width: 100%;
+                background-color: rgb(96, 152, 201);
+                text-align: right;
+                color: rgb(10, 10, 10);
+                font-weight: 500;
+                font-size: 60px;
+            }                  
+            
+            #teclaAC{
+                grid-row: 4;
+                grid-column: 2; 
+                background-color: rgb(215, 76, 76);          
+            }
+            #teclaOnOff{
+                grid-row: 4;
+                grid-column: 4 / span 2;     
+                font-size: 25px;      
+                padding-top: 30px;
+                background-color: rgb(215, 76, 76); 
+            }
+            
+        </style>
+    </head>
+    <body>
+        <h1> Mi calculadora asíncrona (II)</h1>
+        <div class="cuerpo">
+            <p>Introduzca el tiempo de descuento (s):</p>
+            <input type="text" id="pantalla2" class="pantalla2"></input>                      
+            <div id="pantalla" class="pantalla"></div>
+            <div id="teclaOnOff" class="tecla">On/Off</div>            
+        </div>
+    </body>
+    <script type="module">
+        import {miTemporizador, cuentaAtras} from "./6.Practica-02.Ejemplo.js";
+        
+        let pantalla=document.getElementById("pantalla");        
+        
+        function lanzarPromesa(evento){   
+            let tiempo=document.getElementById("pantalla2").value;
+            pantalla.innerHTML="Recogiendo tiempo...";       
+            switch (evento.target.id){
+                case "teclaOnOff":
+                    // Realizamos la ejecución empleando la promesa que hemos creado en la función miTemporizador
+                    miTemporizador(tiempo).then((texto)=>{ //En la parte then se recoge el resultado de ejecución de la promesa si este ha sido satisfactorio (el correspondiente a la ejecución de la función RESOLVER de dentro de la promesa)
+                        pantalla.innerHTML=texto;
+                    }).catch((mensaje)=>{ //En la parte catch se recoge el resultado de ejecución de la promesa si este ha NO sido satisfactorio (el correspondiente a la ejecución de la función RECHAZAR de dentro de la promesa)
+                        pantalla.innerHTML=mensaje;
+                    });
+                    // Podemos realizar la ejecución y se obtendría el mismo comportamiento simplemente empleando la función de cuenta atrás directamente, que implícitamente llama a miTemporizador y ejecuta una promesa igualmente
+                    // cuentaAtras(tiempo,pantalla,1000);
+                    break;
+            }//Fin del switch
+        }//Fin de lanzarPromesa()
+        document.addEventListener("click",lanzarPromesa);
+    </script>
+
+</html>
+
+

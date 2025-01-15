@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Promesas</title>
+        <style>
+            #contenedor{
+                display: flex;
+                justify-content: space-evenly;
+                flex-wrap: wrap;
+            } 
+            .tecla{
+                box-sizing: border-box;
+                background-color: dimgrey;
+                text-align: center;
+                color: aliceblue;
+                font-weight: 500;
+                font-size: 50px;
+                border-radius: 20px;
+                width: 200px;
+                height: 100px;
+                border: solid 5px rgb(0, 0, 0);
+                padding-top: 15px;
+                margin: 0px;
+            }
+            .cuerpo{
+                flex: 0 0 auto;
+                display: grid;
+                box-sizing: border-box;
+                grid-template-columns: repeat(5 1 fr);
+                grid-template-rows: auto;
+                gap: 10px 10px;
+                border-radius: 10px;
+                width: 850px;
+                height: auto;
+                border: solid 5px rgb(0, 0, 0);
+                background-color: rgb(0, 0, 0);
+            }
+            #p1, #p11{
+                box-sizing: border-box;
+                grid-row:1;
+                grid-column: span 5;
+                font-weight: 500;
+                font-size: 50px;
+                width: 100%;
+                color: aliceblue;
+                text-align: center;
+                margin: 0px;
+            }   
+
+            #p2, #p21{
+                box-sizing: border-box;
+                grid-row:3;
+                grid-column: span 5;
+                font-weight: 500;
+                font-size: 50px;
+                width: 100%;
+                color: aliceblue;
+                text-align: center;
+                margin: 0px;
+            }
+            #p3, #p31{
+                box-sizing: border-box;
+                grid-row:5;
+                grid-column: span 5;
+                font-weight: 500;
+                font-size: 50px;
+                width: 100%;
+                color: aliceblue;
+                text-align: center;
+                margin: 0px;
+            }    
+            #pantalla1, #pantalla11{
+                box-sizing: border-box;
+                grid-row: 2;
+                grid-column: span 5;
+                border-radius: 10px;
+                height: 70px;
+                width: 100%;
+                background-color: rgb(96, 152, 201);
+                text-align: right;
+                color: rgb(10, 10, 10);
+                font-weight: 500;
+                font-size: 60px;
+            }  
+            #pantalla2, #pantalla21{
+                box-sizing: border-box;
+                grid-row: 4;
+                grid-column: span 5;
+                border-radius: 10px;
+                height: 70px;
+                width: 100%;
+                background-color: rgb(96, 152, 201);
+                text-align: right;
+                color: rgb(10, 10, 10);
+                font-weight: 500;
+                font-size: 60px;
+            }                  
+            #pantalla3, #pantalla31{
+                box-sizing: border-box;
+                grid-row: 6;
+                grid-column: span 5;
+                border-radius: 10px;
+                height: 70px;
+                width: 100%;
+                background-color: aliceblue;
+                text-align: right;
+                color: rgb(10, 10, 10);
+                font-weight: 500;
+                font-size: 60px;
+            }                
+            #teclaAC{
+                grid-row: 7;
+                grid-column: 2; 
+                background-color: rgb(215, 76, 76);          
+            }
+            #teclaOnOff{
+                grid-row: 7;
+                grid-column: 4 / span 2;     
+                font-size: 25px;      
+                padding-top: 30px;
+                background-color: rgb(215, 76, 76); 
+                margin: 0px;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <h1> Mi calculadora de promesas asíncrona</h1>
+        <div id="contenedor">
+            <div id="cuerpo1" class="cuerpo">
+                <p id="p1">Introduzca el tiempo (ms):</p>
+                <input type="text" id="pantalla1"></input>      
+                <p id="p2">Introduzca el tiempo de espera dentro de la promesa (ms):</p>
+                <input type="text" id="pantalla2"></input> 
+                <p id="p3">Mensaje generado por la promesa:</p>                  
+                <div id="pantalla3"></div>
+                <div id="teclaOnOff" class="tecla">On/Off</div>            
+            </div>
+            <div id="cuerpo2" class="cuerpo">
+                <p id="p11">Tiempo de inicio (ms):</p>
+                <div id="pantalla11"></div>      
+                <p id="p21">Tiempo final (ms):</p>
+                <div id="pantalla21"></div> 
+                <p id="p31">Tiempo total transcurrido (ms):</p>
+                <div id="pantalla31"></div>
+            </div>
+        </div>
+    </body>
+    <script>        
+        function miPromesa(){
+            let tiempo=document.getElementById("pantalla1").value;//Es la variable que recoge el tiempo del temporizador más externo
+            let tiempo2=document.getElementById("pantalla2").value;//Es la variable que recoge el tiempo del temporizador más interno
+
+            let pantalla11=document.getElementById("pantalla11");
+            let pantalla21=document.getElementById("pantalla21");
+            let pantalla31=document.getElementById("pantalla31");
+
+            let tiempoInicio= Date.now();
+            let tiempoFinal;
+
+            pantalla11.textContent=tiempoInicio;
+            console.log("Tiempo inicio:"+tiempoInicio);
+            //Si el tiempo del temporizador más externo es superior al tiempo del temporizador interior, se ejecuta la parte RESOLVER de la promesa
+            //Sin embargo, si el tiempo del temporizador interno es superior al tiempo del temporizador externo, se ejecuta la parte RECHAZAR de la promesa
+            let promesa=new Promise((resolver,rechazar)=>{
+                console.log("Dentro de la promesa 1");
+                let temporizador=setTimeout(()=>{
+                    console.log("Dentro del setTimeOut1");
+                    let temporizador2=setTimeout(()=>{
+                        console.log("Dentro del setTimeOut2");
+                        tiempoFinal= Date.now();
+                        pantalla21.textContent=tiempoFinal;
+                        console.log("Tiempo final:"+tiempoFinal);
+                        //Código de la función RESOLVER de la promesa
+                        if ((tiempoFinal-tiempoInicio)<=(tiempo*2)){
+                            console.log("Dentro del if");
+                            pantalla31.textContent=(tiempoFinal-tiempoInicio);
+                            console.log("tiempoFinal-tiempoInicio= "+(tiempoFinal-tiempoInicio));
+                            resolver("Your time is out");
+                        }
+                        //Código de la función RECHAZAR de la promesa
+                        else{
+                            console.log("Dentro del else");
+                            console.log("tiempoFinal-tiempoInicio= "+(tiempoFinal-tiempoInicio));
+                            rechazar("Something was wrong!!!");
+                        }   
+                    },tiempo2)//Fin de temporizador 2
+                },tiempo);//Fin de temporizador 
+                });
+            return promesa;//devuelvo la promesa creada con los dos métodos RESOLVER y RECHAZAR
+        };
+        
+        function lanzarPromesa(evento){   
+            let pantalla3=document.getElementById("pantalla3");
+
+            pantalla3.innerHTML="Recogiendo tiempo...";       
+            switch (evento.target.id){
+                case "teclaOnOff":
+                    miPromesa().then((texto)=>{ //En la parte then se recoge el resultado de ejecución de la promesa si este ha sido satisfactorio (el correspondiente a la ejecución de la función RESOLVER de dentro de la promesa)
+                        pantalla3.innerHTML=texto;
+                    }).catch((mensaje)=>{ //En la parte catch se recoge el resultado de ejecución de la promesa si este ha NO sido satisfactorio (el correspondiente a la ejecución de la función RECHAZAR de dentro de la promesa)
+                        pantalla3.innerHTML=mensaje;
+                    });
+                    break;
+            }//Fin del switch
+        }//Fin de lanzarPromesa()
+        document.addEventListener("click",lanzarPromesa);
+    </script>
+
+</html>
+
+

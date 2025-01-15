@@ -3,14 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pr 2</title>
-    <script src="6.Practica-01.js" defer></script>  
+    <title>Pr 2</title>      
 </head>
 <body>
+    <script type="module">
+        import {cuentaAtras} from "./6.Practica-02.js";
+
+        function iniciarCuentaAtras(){
+            escribir=document.getElementById("zonaContador");
+            escribir.value=cuentaAtras(document.getElementById("numeroCountdown").value);
+        }
+    </script>
     <label for="numeroCountdown">Introduce un numero para la cuenta atras</label>
     <input type="text" id="numeroCountdown" name="numeroCountdown">
-    <button onclick="iniciarCuentaAtras()"></button>
+    <button onclick="iniciarCuentaAtras()">Iniciar</button>
 
-    <p id="zonaContador"></p>
+    <p id="zonaContador"></p>    
 </body>
 </html>

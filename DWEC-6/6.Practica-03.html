@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica con FETCH</title>
+    <script type="module">
+        import { fetchJson, fetchTexto, insertarHtml } from './6.Practica-03.js'; 
+        document.addEventListener('DOMContentLoaded', async () => {            
+            try { 
+                const json = await fetchJson();
+                document.getElementById("salidaJson").value = json; 
+            } catch (error) { 
+                document.getElementById("salidaJson").value = "Error: "+error.message;
+            } 
+            try { 
+                const texto = await fetchTexto();
+                document.getElementById("textOutput").value = texto; 
+            } catch (error) { 
+                document.getElementById("textOutput").value = "Error: "+error.message;
+            } 
+        });
+    </script>
+</head>
+<body>    
+    <textarea id="salidaJson" rows="10" cols="50"></textarea>
+    <textarea id="textOutput" rows="10" cols="50"></textarea>    
+</body>
+</html>
