@@ -1,0 +1,25 @@
+body{
+    text-align: center;
+    font-size: 120%;
+    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    
+    header{
+        width: 100%;        
+        background: linear-gradient(90deg, rgba(121,9,9,0) 0%, rgba(241,0,17,0.35896365382090334) 38%, rgba(250,2,2,1) 100%);
+        padding: 1%;
+    }
+    
+    textarea{
+        width: 20%;
+    }
+
+    footer{
+        width: 100%;
+        background: linear-gradient(90deg, rgba(49,241,0,0) 0%, rgba(49,241,0,0.35896365382090334) 38%, rgba(49,241,0,1) 100%);
+        padding: 1%;
+    }
+}

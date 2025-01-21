@@ -22,10 +22,15 @@ export async function fetchTexto() {
 
 // Función para insertar HTML en la página
 export function insertarHtml() {
-    const headerHtml = `
-        <header style="background-color: #f8f9fa; padding: 10px; text-align: center;">
-            <h1>Cabecera Consulta a API con fetch</h1>
-        </header>
-    `;
-    document.body.insertAdjacentHTML('afterbegin', headerHtml);
+
+    const body=document.getElementById("cuerpo");
+
+    const header = document.createElement("header");
+    header.innerText='CABECERA Consulta a API con fetch';
+    
+    const footer = document.createElement("footer");
+    footer.innerText= "PIE Consulta a API con fetch";
+            
+    body.insertBefore(header, document.getElementById("salidaJson"));
+    body.appendChild(footer);
 }

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Práctica con FETCH</title>
+    <link rel="stylesheet" type="text/css" href="6.Practica-03.css"/>
     <script type="module">
         import { fetchJson, fetchTexto, insertarHtml } from './6.Practica-03.js'; 
         document.addEventListener('DOMContentLoaded', async () => {            
@@ -20,9 +21,11 @@
                 document.getElementById("textOutput").value = "Error: "+error.message;
             } 
         });
+
+        insertarHtml();
     </script>
 </head>
-<body>    
+<body id="cuerpo">    
     <textarea id="salidaJson" rows="10" cols="50"></textarea>
     <textarea id="textOutput" rows="10" cols="50"></textarea>    
 </body>
