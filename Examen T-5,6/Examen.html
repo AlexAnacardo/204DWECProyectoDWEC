@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen DW2T_DWEC_T5-T6 - OpcionA</title>
+    <!--<script src="Examen.js" defer></script>-->
+</head>
+<style>
+    table{
+        border: 1px solid #000;
+    }
+    td{
+        border: 1px solid #000;
+    }
+    th{
+        border: 1px solid #000;
+    }
+    h1{
+        background: url("Star_Wars_Logo.svg.png") center/20% repeat-x;
+        height: 200px;
+    }
+</style>
+<body>
+    <script type="module">
+        import {crearSelect, devolverUrlPersonajes, devolverUrlActual, devolverUrlSiguiente, devolverUrlAnterior} from "./Examen.js";
+        
+        let urlPersonajes=devolverUrlPersonajes();
+        let urlActual=devolverUrlActual();
+        let siguienteUrl=devolverUrlSiguiente();
+        let anteriorUrl=devolverUrlAnterior();
+
+        document.getElementById('botonPersonajes').addEventListener('click', () => {            
+            //Hago que la variable url actual tenga el valor de la pagina 1 en la url de los personajes
+            urlActual = urlPersonajes;
+            crearSelect(urlActual);
+
+            siguienteUrl=devolverUrlSiguiente();
+        });
+
+        document.getElementById('botonPersonajesPaginaAtras').addEventListener('click', () => {
+
+            anteriorUrl=devolverUrlAnterior();
+            //Extraigo el div que contiene la lista a una variable
+            var contenedorLista = document.getElementById("contenedorSelectPersonajes");
+            
+            //Si existe una pagina anterior a la actual, se entra al if
+            if (anteriorUrl != null) {
+                //Elimino la lista anterior
+                var listaPrevia = document.getElementById("selectPersonas");
+                contenedorLista.removeChild(listaPrevia);
+                //Llamo a la funcion para crear la nueva lista
+                crearSelect(anteriorUrl);
+
+                parrafoError = document.getElementById("parrafoError");
+                contenedorLista.removeChild(parrafoError);
+            }
+            else {
+                //Si no existe ningun mensaje de error previamente creado, creo uno
+                if (!document.contains(document.getElementById("parrafoError"))) {
+                    var parrafoError = document.createElement("p");
+                    parrafoError.innerText = "No hay pagina anterior";
+                    parrafoError.setAttribute("id", "parrafoError");
+
+                    contenedorLista.appendChild(parrafoError);
+                }
+            }
+        }
+        );
+
+        document.getElementById('botonPersonajesPaginaSiguiente').addEventListener('click', () => {
+            siguienteUrl=devolverUrlSiguiente();
+            //Extraigo el div que contiene la lista a una variable
+            var contenedorLista = document.getElementById("contenedorSelectPersonajes");
+            //Si existe una pagina anterior a la actual, se entra al if
+            if (siguienteUrl != null) {
+                //Elimino la lista anterior
+                var listaPrevia = document.getElementById("selectPersonas");
+                contenedorLista.removeChild(listaPrevia);
+                //Llamo a la funcion para crear la nueva lista
+                crearSelect(siguienteUrl);
+
+                parrafoError = document.getElementById("parrafoError");
+                contenedorLista.removeChild(parrafoError);
+            }
+            else {
+                //Si no existe ningun mensaje de error previamente creado, creo uno
+                if (!document.contains(document.getElementById("parrafoError"))) {
+                    var parrafoError = document.createElement("p");
+                    parrafoError.innerText = "No hay pagina siguiente";
+                    parrafoError.setAttribute("id", "parrafoError");
+
+                    contenedorLista.appendChild(parrafoError);
+                }
+            }
+        });
+    </script>
+    <h1></h1>
+    <h2>Selecciona tu personaje favorito para ver algunas de sus características</h2>
+    <label for="botonPersonajes"></label><br>
+    <button id="botonPersonajes" name="botonPersonajes">Mostrar listado de personajes</button><br><br>
+    <!-- Contenedor donde se añadirá el elemento select -->
+    <div id="contenedorSelectPersonajes"></div><br>
+    <!-- Contenedor donde se añadirá la tabla en función del personaje seleccionado en el elemento select -->    
+    <div id="contenedorTablaPersonajes"></div><br>
+    <!-- Contenedor donde se añadirá el error si se produce al cargar el elemento select -->
+    <div id="contenedorError"></div>
+    <label for="botonPersonajesPaginaAtras"></label>
+    <button id="botonPersonajesPaginaAtras" name="botonPersonajesPaginaAtras">Mostrar personajes(página anterior)</button>
+    <label for="botonPersonajesPaginaSiguiente"></label>
+    <button id="botonPersonajesPaginaSiguiente" name="botonPersonajesPaginaSiguiente">Mostrar personajes(página siguiente)</button>
+</body>
+</html>

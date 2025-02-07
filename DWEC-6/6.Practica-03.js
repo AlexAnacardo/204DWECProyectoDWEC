@@ -1,26 +1,28 @@
-
-export async function fetchJson() {
-    try {
-        const contenidoFetch = await fetch('https://randomuser.me/api/?results=3');
-        const cadena = await contenidoFetch.json();
-        return JSON.stringify(cadena);
-    } catch (err) {
-        return "Se ha detectado un error: "+error.message;
-    }
+export function fetchJson() {
+    return fetch('https://randomuser.me/api/?results=3')
+        .then(response => response.json())
+        .then(json => {
+            const salida = JSON.stringify(json);
+            return salida; 
+        })
+        .catch(error => {
+            alert("Error: " + error.message); 
+            
+        });
 }
 
-// Función para obtener datos directamente en texto
-export async function fetchTexto() {
-    try {
-        const response = await fetch('https://randomuser.me/api/?results=3');
-        const data = await response.text();
-        return data;
-    } catch (error) {
-        return "Se ha detectado un error: "+error.message;
-    }
+
+export function fetchTexto() {
+    return fetch('https://randomuser.me/api/?results=3')
+        .then(response => {
+            return response.text();
+        })   
+        .catch(error => {
+            alert("Error: " + error.message);
+            
+        });
 }
 
-// Función para insertar HTML en la página
 export function insertarHtml() {
 
     const body=document.getElementById("cuerpo");

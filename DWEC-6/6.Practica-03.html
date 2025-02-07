@@ -7,26 +7,17 @@
     <link rel="stylesheet" type="text/css" href="6.Practica-03.css"/>
     <script type="module">
         import { fetchJson, fetchTexto, insertarHtml } from './6.Practica-03.js'; 
-        document.addEventListener('DOMContentLoaded', async () => {            
-            try { 
-                const json = await fetchJson();
-                document.getElementById("salidaJson").value = json; 
-            } catch (error) { 
-                document.getElementById("salidaJson").value = "Error: "+error.message;
-            } 
-            try { 
-                const texto = await fetchTexto();
-                document.getElementById("textOutput").value = texto; 
-            } catch (error) { 
-                document.getElementById("textOutput").value = "Error: "+error.message;
-            } 
+        
+        document.addEventListener('DOMContentLoaded', async () => {                        
+            document.getElementById("salidaJson").value = await fetchJson();
+            document.getElementById("salidaTexto").value = await fetchTexto();
+            // Ahora podemos ejecutar insertarHtml, ya que ya hemos procesado fetchJson
+            insertarHtml(); 
         });
-
-        insertarHtml();
     </script>
 </head>
 <body id="cuerpo">    
     <textarea id="salidaJson" rows="10" cols="50"></textarea>
-    <textarea id="textOutput" rows="10" cols="50"></textarea>    
+    <textarea id="salidaTexto" rows="10" cols="50"></textarea>    
 </body>
 </html>

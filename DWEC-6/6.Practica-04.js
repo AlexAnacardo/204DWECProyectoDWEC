@@ -4,8 +4,7 @@ async function extraerJson(){
     return new Promise((resolve, reject) =>{
         try{            
             JsonParseado=JSON.parse(cadenaJson);
-            resolve(JsonParseado                
-            );
+            resolve(JsonParseado);
         }catch(error){
             reject(new Error("La liaste socio"));            
         }
